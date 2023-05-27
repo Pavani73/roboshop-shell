@@ -1,17 +1,18 @@
-echo -e "\e[33mINSTALLING NGINX SERVER\E[0M"
+echo -e "\e[33mINSTALLING NGINX SERVER\e[0m"
 yum install nginx -y
-echo -e "\e[33mREMOVING OLD APP CONTENT\E[0M"
+
+echo -e "\e[33mREMOVING OLD APP CONTENT\e[0m"
 rm -rf /usr/share/nginx/html/*
 
-echo -e "\e[33mDOWNLOADING FRONTEND CONTENT\E[0M"
+echo -e "\e[33mDOWNLOADING FRONTEND CONTENT\e[0m"
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
 
-echo -e "\e[33mEXTRACT FRONTEND CONTENT\E[0M"
+echo -e "\e[33mEXTRACT FRONTEND CONTENT\e[0m"
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 
 # we need to create config file
 
-echo -e "\e[33mSTARTING NGINX SERVER\E[0M"
+echo -e "\e[33mSTARTING NGINX SERVER\e[0m"
 systemctl enable nginx
 systemctl restart nginx
